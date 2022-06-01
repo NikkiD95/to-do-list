@@ -1,0 +1,84 @@
+html 
+
+<html>
+
+<head>
+
+    <link href="./style.css" rel="stylesheet" />
+
+    <script src="./script.js"></script>
+
+</head>
+
+<body>
+
+    <div class="topwrapper">
+        <h1 style="color:antiquewhite">To do:</h1>
+    </div>
+
+    <div class="wrapper">
+
+
+        <input type="text" id="input" name="input">
+
+        <button class="addToList">Add to list</button>
+
+
+    </div>
+
+</body>
+
+</html>
+
+
+css
+
+.topWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    height: 100px;
+    background-color: blueviolet;
+}
+
+.wrapper {
+    display: flex;
+    width: 500px;
+    height: 500px;
+    background-color: rgb(211, 182, 238);
+
+}
+
+input[type=text] {
+    width: 400px;
+    max-height: 50px;
+    padding: 12px 20px;
+    margin: 450px 5px;
+    margin-left: 10px;
+
+}
+
+.addToList {
+    cursor: default;
+    background-color: rgb(240, 235, 235);
+    text-align: center;
+    border: 1px rgb(117, 117, 117) solid;
+    border-radius: 2px;
+    height: 40px;
+    width: 70px;
+    margin-top: 450px;
+}
+
+.addToList:hover {
+    box-shadow: 0 2px 2px 0 rgba(68, 68, 68, 0.24)
+}
+
+.addToList:active {
+    background-color: rgb(177, 177, 177);
+}
+
+javascript
+
+// een to do lijst waar je kan zeggen wat je toe wil toevoegen d.m.v. een input veld. optioneel
+// voeg je een optie toe waarmee je deze ook weg kan klikken
