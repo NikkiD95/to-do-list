@@ -14,25 +14,31 @@ html
 
     <div class="topwrapper">
         <h1 style="color:antiquewhite">To do:</h1>
+
+
+
     </div>
+
 
     <div class="wrapper">
 
 
+
+        <div class="inputField">
+
+            <div id="toDos"></div>
+
+        </div>
         <input type="text" id="input" name="input">
 
-        <button class="addToList">Add to list</button>
-
-
+        <button onclick="addToDo()" class="addToList">Add to list</button>
     </div>
 
 </body>
 
 </html>
 
-
 css
-
 .topWrapper {
     display: flex;
     justify-content: center;
@@ -54,7 +60,7 @@ input[type=text] {
     width: 400px;
     max-height: 50px;
     padding: 12px 20px;
-    margin: 450px 5px;
+    margin: 430px 5px;
     margin-left: 10px;
 
 }
@@ -67,7 +73,7 @@ input[type=text] {
     border-radius: 2px;
     height: 40px;
     width: 70px;
-    margin-top: 450px;
+    margin-top: 430px;
 }
 
 .addToList:hover {
@@ -78,7 +84,45 @@ input[type=text] {
     background-color: rgb(177, 177, 177);
 }
 
+.inputField {
+    display: flex;
+    background-color: rgb(247, 234, 255);
+    width: 400px;
+    height: 400px;
+    margin-left: 40px;
+    margin-top: 20px;
+}
+
+.toDoItem {
+    padding: 4px;
+    width: 100%;
+    border-bottom: 1px solid black;
+}
+
+#toDos {
+    width: 100%;
+}
 javascript
 
 // een to do lijst waar je kan zeggen wat je toe wil toevoegen d.m.v. een input veld. optioneel
 // voeg je een optie toe waarmee je deze ook weg kan klikken
+
+// input veld moet de string pakken en deze naar een andere plek toe plakken
+// wanneer je op de knop drukt
+
+// 
+
+function addToDo() {
+    let input = document.getElementById("input")
+    let todos = document.getElementById("toDos")
+
+    let html = `<div class="toDoItem">${input.value}</div>`
+
+    input.value = ""
+
+
+    todos.innerHTML = todos.innerHTML + html
+
+
+
+}
