@@ -19,19 +19,23 @@ html
 
     </div>
 
+    </div>
+
 
     <div class="wrapper">
 
-
+    <div>
 
         <div class="inputField">
 
             <div id="toDos"></div>
-
         </div>
-        <input type="text" id="input" name="input">
+
+        <input type="text" id="input" name="input" maxlength="54">
 
         <button onclick="addToDo()" class="addToList">Add to list</button>
+
+        <button id="cancelButton"></button>
     </div>
 
 </body>
@@ -43,25 +47,27 @@ css
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 500px;
+    width: 550px;
     height: 100px;
     background-color: blueviolet;
 }
 
 .wrapper {
     display: flex;
-    width: 500px;
+    width: 550px;
     height: 500px;
     background-color: rgb(211, 182, 238);
+    position: relative;
+
 
 }
 
 input[type=text] {
     width: 400px;
-    max-height: 50px;
-    padding: 12px 20px;
+    max-height: 40px;
+    padding: 5px;
     margin: 430px 5px;
-    margin-left: 10px;
+    margin-left: 50px;
 
 }
 
@@ -74,6 +80,9 @@ input[type=text] {
     height: 40px;
     width: 70px;
     margin-top: 430px;
+    margin-left: 2px;
+    position: absolute;
+
 }
 
 .addToList:hover {
@@ -87,20 +96,31 @@ input[type=text] {
 .inputField {
     display: flex;
     background-color: rgb(247, 234, 255);
-    width: 400px;
+    width: 450px;
     height: 400px;
-    margin-left: 40px;
-    margin-top: 20px;
+    margin-left: 47px;
+    margin-top: 25px;
+    position: absolute;
+
 }
 
 .toDoItem {
     padding: 4px;
-    width: 100%;
-    border-bottom: 1px solid black;
+    width: 98%;
+    border-bottom: 1px solid rgb(56, 15, 83);
+
 }
 
 #toDos {
     width: 100%;
+    padding-left: 4px;
+    padding-right: 4px;
+
+}
+
+.cancelButton {
+    width: 10px;
+    height: 10px;
 }
 javascript
 
@@ -110,7 +130,10 @@ javascript
 // input veld moet de string pakken en deze naar een andere plek toe plakken
 // wanneer je op de knop drukt
 
-// 
+// nog te doen: inbouwen dat je maar x aantal to dos kan toevoegen of
+// een scroll bar mogelijk?
+// ook mogelijk zo krijgen dat de input niet limited characters hoeft te hebben
+// maar dat hij automatisch aanvult eronder
 
 function addToDo() {
     let input = document.getElementById("input")
@@ -126,3 +149,16 @@ function addToDo() {
 
 
 }
+
+let getInput = document.getElementById("todos")
+let cancelButton = document.getElementById("cancelButton")
+
+cancelButton.addEventListener('click', function(event) {
+    const input = document.getElementById("input");
+    cancelButton.style.display = 'block'
+    cancelButton.innerHTML = todos.innerHTML + html
+})
+
+// volgende stap is een x button maken bij ieder item 
+
+
