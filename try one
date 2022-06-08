@@ -1,4 +1,5 @@
 html 
+
 <html>
 
 <head>
@@ -11,12 +12,15 @@ html
 
 <body>
 
+    </svg>
+
     <div class="topwrapper">
         <h1 style="color:antiquewhite">To do:</h1>
 
 
 
     </div>
+
 
     </div>
 
@@ -25,16 +29,14 @@ html
 
         <div>
 
-            <textarea id="inputField" name="inputField" rows="30" cols="50">
+            <div class="inputField">
+
+                <div id="toDos"></div>
+
+            </div>
 
 
-
-            </textarea>
-
-            <div id="toDos"></div>
-
-
-            <input type="text" id="input" name="input" maxlength="42">
+            <input type="text" id="input" name="input">
 
             <button onclick="addToDo()" class="addToList">Add to list</button>
 
@@ -104,6 +106,9 @@ input[type=text] {
     margin-left: 47px;
     margin-top: 25px;
     position: absolute;
+    overflow-y: auto;
+    overflow-x: hidden;
+    word-wrap: break-word;
 
 }
 
@@ -138,33 +143,43 @@ javascript
 // ook mogelijk zo krijgen dat de input niet limited characters hoeft te hebben
 // maar dat hij automatisch aanvult eronder
 // get element by class name
+// target / parent element / remove / mouse event
+
+
+// volgorde > pijltjes naar boven en benenden 
+// eventueel meerdere vakken, backlog etc 
+
+const trashIcon = "X"
 
 
 function addToDo() {
     let input = document.getElementById("input")
+    let inputField = document.getElementById("inputField")
     let todos = document.getElementById("toDos")
+
+    console.log(inputField)
 
     if (input.value == "") {
         return
     }
 
-    let html = `<div class="toDoItem">${input.value}</div>`
+    let html = `<div class="toDoItem">${input.value} <span onclick="deleteToDo()">${trashIcon}</span></div>`
 
     input.value = ""
-
 
     todos.innerHTML = todos.innerHTML + html
 
 }
 
+function deleteToDo(e) {
+    let target = event.target
 
-//let getInput = document.getElementById("todos")
-//let cancelButton = document.getElementById("cancelButton")
+    console.log("Target Name", target.nodeName)
+    target.parentElement.remove()
+    console.log(event)
 
-//cancelButton.addEventListener('click', function (event) {
-//    const input = document.getElementById("input");
-//    cancelButton.style.display = 'block'
-//    cancelButton.innerHTML = todos.innerHTML + html
-//})
 
-// volgende stap is een x button maken bij ieder item 
+}
+
+
+//     target.parentElement.style.backgroundColor = "green"
