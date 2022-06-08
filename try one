@@ -1,5 +1,4 @@
 html 
-
 <html>
 
 <head>
@@ -24,19 +23,23 @@ html
 
     <div class="wrapper">
 
-    <div>
+        <div>
 
-        <div class="inputField">
+            <textarea id="inputField" name="inputField" rows="30" cols="50">
+
+
+
+            </textarea>
 
             <div id="toDos"></div>
+
+
+            <input type="text" id="input" name="input" maxlength="42">
+
+            <button onclick="addToDo()" class="addToList">Add to list</button>
+
+            <button id="cancelButton"></button>
         </div>
-
-        <input type="text" id="input" name="input" maxlength="54">
-
-        <button onclick="addToDo()" class="addToList">Add to list</button>
-
-        <button id="cancelButton"></button>
-    </div>
 
 </body>
 
@@ -134,10 +137,16 @@ javascript
 // een scroll bar mogelijk?
 // ook mogelijk zo krijgen dat de input niet limited characters hoeft te hebben
 // maar dat hij automatisch aanvult eronder
+// get element by class name
+
 
 function addToDo() {
     let input = document.getElementById("input")
     let todos = document.getElementById("toDos")
+
+    if (input.value == "") {
+        return
+    }
 
     let html = `<div class="toDoItem">${input.value}</div>`
 
@@ -146,19 +155,16 @@ function addToDo() {
 
     todos.innerHTML = todos.innerHTML + html
 
-
-
 }
 
-let getInput = document.getElementById("todos")
-let cancelButton = document.getElementById("cancelButton")
 
-cancelButton.addEventListener('click', function(event) {
-    const input = document.getElementById("input");
-    cancelButton.style.display = 'block'
-    cancelButton.innerHTML = todos.innerHTML + html
-})
+//let getInput = document.getElementById("todos")
+//let cancelButton = document.getElementById("cancelButton")
+
+//cancelButton.addEventListener('click', function (event) {
+//    const input = document.getElementById("input");
+//    cancelButton.style.display = 'block'
+//    cancelButton.innerHTML = todos.innerHTML + html
+//})
 
 // volgende stap is een x button maken bij ieder item 
-
-
